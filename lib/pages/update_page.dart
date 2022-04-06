@@ -20,8 +20,10 @@ class _UpdatePostPageState extends State<UpdatePostPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    controller.titleController = TextEditingController(text: widget.post!.title!);
-    controller.bodyController = TextEditingController(text: widget.post!.body!);
+    if(widget.post != null) {
+      controller.titleController = TextEditingController(text: widget.post!.title!).obs;
+      controller.bodyController = TextEditingController(text: widget.post!.body!).obs;
+    }
   }
 
   @override
@@ -38,10 +40,11 @@ class _UpdatePostPageState extends State<UpdatePostPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
 
+                    ////////////////////////title
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
-                        controller: controller.titleController,
+                        controller: controller.titleController.value,
                         decoration: const InputDecoration(
                           hintText: 'Title',
                           hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
@@ -51,12 +54,13 @@ class _UpdatePostPageState extends State<UpdatePostPage> {
 
                     const SizedBox(height: 20,),
 
+                   ////////////////////////content
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
-                        controller: controller.bodyController,
+                        controller: controller.bodyController.value,
                         decoration: const InputDecoration(
-                          hintText: 'Title',
+                          hintText: 'Content',
                           hintStyle: TextStyle(color: Colors.grey, fontSize: 15),
                         ),
                       ),
@@ -64,6 +68,7 @@ class _UpdatePostPageState extends State<UpdatePostPage> {
 
                     const SizedBox(height: 30,),
 
+                    ////////////////////////update button
                     MaterialButton(
                       color: Colors.blue,
                       shape: RoundedRectangleBorder(

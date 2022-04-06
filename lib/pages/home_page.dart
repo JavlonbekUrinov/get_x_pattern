@@ -73,16 +73,10 @@ class _HomePageState extends State<HomePage> {
     return Slidable(
       child: Container(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-        
-        
-        
-        
-        ////////////updated
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-
               post.title!.toUpperCase(),
               style: const TextStyle(
                   color: Colors.black, fontWeight: FontWeight.bold),
@@ -91,9 +85,15 @@ class _HomePageState extends State<HomePage> {
               height: 5,
             ),
             Text(post.body!),
+            const SizedBox(
+              height: 5,
+            ),
+            Divider(height: 3,color: Colors.black),
           ],
         ),
       ),
+
+      //////////////////////////////////////slidable start point
       startActionPane: ActionPane(
         extentRatio: 0.3,
         motion: const ScrollMotion(),
@@ -103,11 +103,13 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: Colors.indigo,
             icon: Icons.edit,
             onPressed: (_) {
-             Get.to(UpdatePostPage());
+             Get.to(UpdatePostPage(post: post,));
             },
           ),
         ],
       ),
+
+      //////////////////////////////////////slidable end point
       endActionPane: ActionPane(
         motion: const ScrollMotion(),
         extentRatio: 0.3,

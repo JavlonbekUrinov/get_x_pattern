@@ -6,15 +6,15 @@ import 'package:get_x_pattern/services/service.dart';
 class UpdateController extends GetxController{
 
 
-  TextEditingController titleController = TextEditingController();
-  TextEditingController bodyController = TextEditingController();
+  var titleController = TextEditingController().obs;
+  var bodyController = TextEditingController().obs;
   var isLoading = false.obs;
 
   void updatePost() async{
       isLoading(true);
 
-    String title = titleController.text.trim().toString();
-    String body = bodyController.text.trim().toString();
+    String title = titleController.value.text.trim().toString();
+    String body = bodyController.value.text.trim().toString();
     Post post = Post(title: title, body: body);
     if(title.isNotEmpty && body.isNotEmpty) {
       await Network.PUT(Network.API_UPDATE, Network.paramsUpdate(post)).then((value){

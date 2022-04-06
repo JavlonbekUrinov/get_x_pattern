@@ -35,6 +35,8 @@ class _AddPostPageState extends State<AddPostPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+
+                    ////////title textfield
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
@@ -47,7 +49,7 @@ class _AddPostPageState extends State<AddPostPage> {
                     ),
 
                     const SizedBox(height: 20,),
-
+                    ////////content textfield
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextField(
@@ -61,6 +63,8 @@ class _AddPostPageState extends State<AddPostPage> {
 
                     const SizedBox(height: 30,),
 
+
+                    ////////save button
                     MaterialButton(
                       color: Colors.blue,
                       shape: RoundedRectangleBorder(
